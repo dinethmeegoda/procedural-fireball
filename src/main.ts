@@ -14,7 +14,7 @@ import ShaderProgram, {Shader} from './rendering/gl/ShaderProgram';
 const controls = {
   tesselations: 5,
   'Switch Obj': loadScene, // A function pointer, essentially
-  color: [13, 13, 13] as [number, number, number],
+  color: [175, 46, 29] as [number, number, number],
 };
 
 // true = cube, false = icosphere, it gets swapped at initialize 
@@ -97,6 +97,7 @@ function main() {
       vec4.scale(newColor, newColor, 1 / 256);
       fire.setGeometryColor(newColor);
     }
+    fire.setDir(vec4.fromValues(camera.controls.eye[0], camera.controls.eye[1], camera.controls.eye[2], 1))
     const renderedObj = shape ? cube : icosphere;
     renderer.render(camera, fire, [
       //icosphere,

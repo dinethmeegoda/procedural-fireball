@@ -1,5 +1,23 @@
 # [Project 1: Noise](https://github.com/CIS-566-Fall-2022/hw01-fireball-base)
 
+## Dineth Meegoda
+
+I decided to try to make a character with the fireball premise and I picked a childhood character very near and dear to my heart, Fireboy from Fireboy and Watergirl. Unfortunately, as of this commit, I did not have enough time to fully finish the character (but if you look at future commits I will probably have him much further progressed).
+
+The biggest thing that I'm proud of doing is creating the cel shaded outline effect which was only possible by recalculating the normals during the vertex shader after the transformations and then passing it to the fragment shader to calculate the dot product with the camera direction to create the outline. These normals were calculated by calculating the bitangent and tangent vectors to the original normal and then coming up with two new points along the bitangent and tangent vectors, then applying the transformations to all 3 vertices, then using those 3 positions to find the new normal via cross-product.
+
+[Live Demo](https://dinethmeegoda.github.io/procedural-fireball/)
+
+# Images
+
+## Current Fireboy:
+
+![](./images/fireboy.png)
+
+## Reference:
+
+![](./images/ref.png)
+
 ## Objective
 
 Get comfortable with using WebGL and its shaders to generate an interesting 3D, continuous surface using a multi-octave noise algorithm.
@@ -14,17 +32,18 @@ Get comfortable with using WebGL and its shaders to generate an interesting 3D, 
 
 4. Do either of the following (but I highly recommend the first one for reasons I will explain later).
 
-    a. Run `npm start` and then go to `localhost:7000` in your web browser
+   a. Run `npm start` and then go to `localhost:7000` in your web browser
 
-    b. Run `npm run build` and then go open `index.html` in your web browser
+   b. Run `npm run build` and then go open `index.html` in your web browser
 
-    You should hopefully see the framework code with a 3D cube at the center of the screen!
-
+   You should hopefully see the framework code with a 3D cube at the center of the screen!
 
 ## Developing Your Code
+
 All of the JavaScript code is living inside the `src` directory. The main file that gets executed when you load the page as you may have guessed is `main.js`. Here, you can make any changes you want, import functions from other files, etc. The reason that I highly suggest you build your project with `npm start` is that doing so will start a process that watches for any changes you make to your code. If it detects anything, it'll automagically rebuild your project and then refresh your browser window for you. Wow. That's cool. If you do it the other way, you'll need to run `npm build` and then refresh your page every time you want to test something.
 
 ## Publishing Your Code
+
 We highly suggest that you put your code on GitHub. One of the reasons we chose to make this course using JavaScript is that the Web is highly accessible and making your awesome work public and visible can be a huge benefit when you're looking to score a job or internship. To aid you in this process, running `npm run deploy` will automatically build your project and push it to `gh-pages` where it will be visible at `username.github.io/repo-name`.
 
 ## Setting up `main.ts`
@@ -41,7 +60,6 @@ Across your vertex and fragment shaders, you must implement a variety of functio
 - Both the vertex and fragment shaders should alter their output based on a uniform time variable (i.e. they should be animated). You might consider making a constant animation that causes the fireball's surface to roil, or you could make an animation loop in which the fireball repeatedly explodes.
 - Across both shaders, you should make use of at least four of the functions discussed in the Toolbox Functions slides.
 
-
 ## Noise Application
 
 View your noise in action by applying it as a displacement on the surface of your icosahedron, giving your icosahedron a bumpy, cloud-like appearance. Simply take the noise value as a height, and offset the vertices along the icosahedron's surface normals. You are, of course, free to alter the way your noise perturbs your icosahedron's surface as you see fit; we are simply recommending an easy way to visualize your noise. You could even apply a couple of different noise functions to perturb your surface to make it even less spherical.
@@ -52,13 +70,13 @@ For both visual impact and debugging help, also apply color to your geometry usi
 
 ## Interactivity
 
-Using dat.GUI, make at least THREE aspects of your demo interactive variables. For example, you could add a slider to adjust the strength or scale of the noise, change the number of noise octaves, etc. 
+Using dat.GUI, make at least THREE aspects of your demo interactive variables. For example, you could add a slider to adjust the strength or scale of the noise, change the number of noise octaves, etc.
 
 Add a button that will restore your fireball to some nice-looking (courtesy of your art direction) defaults. :)
 
 ## Extra Spice
 
-Choose one of the following options: 
+Choose one of the following options:
 
 - Background (easy-hard depending on how fancy you get): Add an interesting background or a more complex scene to place your fireball in so it's not floating in a black void
 - Custom mesh (easy): Figure out how to import a custom mesh rather than using an icosahedron for a fancy-shaped cloud.

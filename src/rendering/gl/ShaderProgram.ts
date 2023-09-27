@@ -29,8 +29,9 @@ class ShaderProgram {
   unifModelInvTr: WebGLUniformLocation;
   unifViewProj: WebGLUniformLocation;
   unifColor: WebGLUniformLocation;
+  unifColor2: WebGLUniformLocation;
   unifTime: WebGLUniformLocation;
-  unifDir: WebGLUniformLocation;
+  unifCam: WebGLUniformLocation;
 
   constructor(shaders: Array<Shader>) {
     this.prog = gl.createProgram();
@@ -50,8 +51,9 @@ class ShaderProgram {
     this.unifModelInvTr = gl.getUniformLocation(this.prog, "u_ModelInvTr");
     this.unifViewProj   = gl.getUniformLocation(this.prog, "u_ViewProj");
     this.unifColor      = gl.getUniformLocation(this.prog, "u_Color");
+    this.unifColor2      = gl.getUniformLocation(this.prog, "u_Color2");
     this.unifTime       = gl.getUniformLocation(this.prog, "u_Time");
-    this.unifDir = gl.getUniformLocation(this.prog, "u_Dir");
+    this.unifCam = gl.getUniformLocation(this.prog, "u_Cam");
   }
 
   use() {
@@ -89,10 +91,17 @@ class ShaderProgram {
     }
   }
 
-  setDir(dir: vec4) {
+  setSecondaryColor(color: vec4) {
+    this.use();
+    if (this.unifColor2 !== -1) {
+      gl.uniform4fv(this.unifColor2, color);
+    }
+  }
+
+  setCam(cam: vec4) {
     this.use()
-    if (this.unifDir !== -1) {
-      gl.uniform4fv(this.unifDir, dir);
+    if (this.unifCam !== -1) {
+      gl.uniform4fv(this.unifCam, cam);
     }
   }
 

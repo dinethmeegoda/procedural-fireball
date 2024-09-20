@@ -13,7 +13,7 @@ import ShaderProgram, {Shader} from './rendering/gl/ShaderProgram';
 // This will be referred to by dat.GUI's functions that add GUI elements.
 const controls = {
   tesselations: 5,
-  color: [175, 46, 29] as [number, number, number],
+  color: [175, 46, 30] as [number, number, number],
   secondary_color: [255, 161, 101.5] as [number, number, number],
   eye_color: [255, 255, 0] as [number, number, number],
 };
